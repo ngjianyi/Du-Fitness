@@ -1,0 +1,64 @@
+{% extends "calorie/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <div class="container-fluid col-sm-6 my-2 text-center">
+        <h2>{{ user.username }}'s Profile</h2>
+
+        <div id="daily-calories">
+            {% if calories %}
+                <p class="lead">Your daily calories are set to {{ calories }}.</p>
+            {% else %}
+                <p class="lead">Your daily calories are not set.</p>
+            {% endif %}
+        </div>
+
+        <button type="button" id="calories-form-button" class="btn btn-primary">Edit Daily Calories</button>
+
+        <div class="row" id="calories-form">
+            <p class="lead" id="calories-form-message"></p>
+
+            <div class="col p-2 ms-2 border rounded-start">
+                <p>Get your recommended daily calories</p>
+                    <select class="form-select mb-3" id="gender" required>
+                        <option value="" selected>Select your gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                    <div class="mb-3">
+                        <input type="number"class="form-control" id="age" min="1" placeholder="Age" required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="number" class="form-control" id="height" min="1" placeholder="Height" required>
+                        <span class="input-group-text">cm</span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="number" class="form-control" id="weight" min="1" placeholder="Weight" required>
+                        <span class="input-group-text">kg</span>
+                    </div>
+                    <select class="form-select mb-3" id="activeness" required>
+                        <option value="" selected>How active are you?</option>
+                        <option value="sedentary">Sedentary</option>
+                        <option value="light">Light Activity</option>
+                        <option value="moderate">Moderate Activity</option>
+                        <option value="active">Active</option>
+                        <option value="very-active">Very Active</option>
+                    </select>
+                    <button type="button" id="recommended-calories-form" class="btn btn-primary">Set Recommended Calories</button>
+            </div>
+
+            <div class="col p-2 me-2 border rounded-end">
+                <p>Set your custom daily calories</p>
+                <div class="mb-3">
+                    <input type="number" class="form-control" id="custom-daily-calories" min="1" placeholder="Custom Daily Calories" required>
+                </div>
+                <button type="button" id="custom-calories-form" class="btn btn-primary">Set Custom Calories</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'calorie/calorie.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+{% endblock %}

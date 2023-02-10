@@ -1,0 +1,80 @@
+{% extends "calorie/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <div class="container-fluid col-sm-6 my-2 text-center">
+        
+        
+        {% if user.is_authenticated %}
+            {% if calories %}
+                <p class="lead">Your daily calories are set to {{ calories }}.</p>
+
+                <div>
+                    <div class="progress" role="progressbar">
+                        <div id="progress-bar" class="progress-bar" data-dailycalories="{{calories}}" data-todaycalories="{{today_calories}}" style="width:0%">
+                        </div>
+                    </div>
+                    <div id="progress-message">
+                    </div>
+                </div>
+                {% else %}
+                    <p class="lead">Your daily calories are not set.</p>
+                    <p>Go to Profile > Edit Daily Calories to set your daily calories.</p>
+                {% endif %}
+
+                <div class="row my-2 py-2">
+                    <h4>Log Your Calories</h4>
+
+                    <p class="lead" id="log-calories-message"></p>
+
+                    <div class="col p-2 ms-2 border rounded-start">
+                        <p>Calculated calories</p>
+
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="calculated-food-name" placeholder="Food" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="calculated-food-quantity" min="1" placeholder="Quantity" required>
+                        </div>
+                        <button type="button" id="calculated-calories" class="btn btn-primary">Log Calculated Calories</button>
+                    </div>
+
+                    <div class="col p-2 me-2 border rounded-end">
+                        <p>Custom calories</p>
+
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="custom-food-name" placeholder="Food" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="custom-food-quantity" min="1" placeholder="Quantity" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="number" class="form-control" id="custom-food-calories" min="1" placeholder="Calories" required>
+                            <span class="input-group-text">kcal</span>
+                        </div>
+                        <button type="submit" id="custom-calories" class="btn btn-primary">Log Custom Calories</button>
+                    </div>
+                </div>
+        {% else %}
+            <p class="lead">Log in to start tracking your calories!</p>
+        {% endif %}
+        
+        
+        <div class="p-2 my-4 border rounded">
+            <div class="my-2" id="calculator-ans">Calories Calculator</div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="calculator-food-name" placeholder="Food" required>
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="calculator-food-quantity" min="1" placeholder="Quantity" required>
+                </div>
+                <button type="button" id="calculator-calories" class="btn btn-primary">Calculate Calories</button>
+            </div>
+        <div id="edamam-badge" class="my-2"></div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'calorie/calorie.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+{% endblock %}
