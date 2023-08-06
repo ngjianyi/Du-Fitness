@@ -3,7 +3,7 @@ Du Fitness is a calorie calculator and tracker web application built using Djang
 
 ## Usage
 ```bash
-cd calorie
+cd capstone
 ```
 
 To migrate models
