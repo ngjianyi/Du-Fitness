@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 })
 
+
 // Custom daily calories form
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -119,8 +120,8 @@ document.addEventListener('DOMContentLoaded', () => {
 // Calorie Calculator
 function calorie() {
     
-    const APP_ID = '3b285604'
-    const APP_KEY = 'd6df9e13620924ab9ca623a319cd69e6'
+    const APP_ID = document.querySelector('.APP_ID').value;
+    const APP_KEY = document.querySelector('.APP_KEY').value;
     const nutrition_type = 'cooking';
     const name = document.querySelector('#calculator-food-name').value;
     const quantity = document.querySelector('#calculator-food-quantity').value;
@@ -229,8 +230,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const name = document.querySelector('#calculated-food-name').value;
         const quantity = document.querySelector('#calculated-food-quantity').value;
 
-        const APP_ID = '3b285604'
-        const APP_KEY = 'd6df9e13620924ab9ca623a319cd69e6'
+        const APP_ID = document.querySelector('.APP_ID').value;
+        const APP_KEY = document.querySelector('.APP_KEY').value;
         const nutrition_type = 'cooking';
 
         fetch (`https://api.edamam.com/api/nutrition-data?app_id=${APP_ID}&app_key=${APP_KEY}&nutrition-type=${nutrition_type}&ingr=${quantity}%20${name}`, {

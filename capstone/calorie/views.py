@@ -9,10 +9,10 @@ from django.contrib.auth.decorators import login_required
 
 from datetime import date, datetime, timedelta
 from .models import User, Food, Calories
+import os
 
 
 def index(request):
-
     # User is logged in
     if request.user.is_authenticated:
 
@@ -31,11 +31,16 @@ def index(request):
         return render(request, "calorie/index.html", {
             "calories": calories,
             "today_calories": today_calories,
+            "APP_ID": os.environ.get("APP_ID"),
+            "APP_KEY": os.environ.get("APP_KEY")
         })
 
     # User is not logged in
     else:
-        return render(request, "calorie/index.html")
+        return render(request, "calorie/index.html", {
+            "APP_ID": os.environ.get("APP_ID"),
+            "APP_KEY": os.environ.get("APP_KEY")
+        })
 
 
 @login_required(login_url="/login")

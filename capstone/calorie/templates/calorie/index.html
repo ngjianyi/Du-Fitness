@@ -4,7 +4,6 @@
 {% block body %}
     <div class="container-fluid col-sm-6 my-2 text-center">
         
-        
         {% if user.is_authenticated %}
             {% if calories %}
                 <p class="lead">Your daily calories are set to {{ calories }}.</p>
@@ -36,6 +35,8 @@
                         <div class="mb-3">
                             <input type="text" class="form-control" id="calculated-food-quantity" min="1" placeholder="Quantity" required>
                         </div>
+                        <input type="hidden" class="APP_KEY" value="{{APP_KEY}}">
+                        <input type="hidden" class="APP_ID" value="{{APP_ID}}">
                         <button type="button" id="calculated-calories" class="btn btn-primary">Log Calculated Calories</button>
                     </div>
 
@@ -68,6 +69,8 @@
                 <div class="mb-3">
                     <input type="text" class="form-control" id="calculator-food-quantity" min="1" placeholder="Quantity" required>
                 </div>
+                <input type="hidden" class="APP_KEY" value="{{APP_KEY}}">
+                <input type="hidden" class="APP_ID" value="{{APP_ID}}">
                 <button type="button" id="calculator-calories" class="btn btn-primary">Calculate Calories</button>
             </div>
         <div id="edamam-badge" class="my-2"></div>
