@@ -13,7 +13,7 @@ export APP_KEY='[EDAMAM_APP_KEY]'
 ```
 
 ```bash
-cd calorie
+cd capstone
 ```
 
 To migrate models
