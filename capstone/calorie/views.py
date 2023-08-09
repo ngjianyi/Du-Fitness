@@ -3,11 +3,10 @@ from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
-import json
-from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 
-from datetime import date, datetime, timedelta
+import json
+from datetime import date
 from .models import User, Food, Calories
 import os
 

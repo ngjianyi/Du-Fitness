@@ -8,6 +8,14 @@
         <div id="daily-calories">
             {% if calories %}
                 <p class="lead">Your daily calories are set to {{ calories }}.</p>
+                <div>
+                    <div class="progress" role="progressbar">
+                        <div id="progress-bar" class="progress-bar" data-dailycalories="{{calories}}" data-todaycalories="{{today_calories}}" style="width:0%">
+                        </div>
+                    </div>
+                        <div id="progress-message">
+                    </div>
+                </div>
             {% else %}
                 <p class="lead">Your daily calories are not set.</p>
             {% endif %}
@@ -56,9 +64,4 @@
             </div>
         </div>
     </div>
-{% endblock %}
-
-{% block script %}
-    <script src="{% static 'calorie/calorie.js' %}"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 {% endblock %}

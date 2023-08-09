@@ -7,19 +7,18 @@
         {% if user.is_authenticated %}
             {% if calories %}
                 <p class="lead">Your daily calories are set to {{ calories }}.</p>
-
                 <div>
                     <div class="progress" role="progressbar">
                         <div id="progress-bar" class="progress-bar" data-dailycalories="{{calories}}" data-todaycalories="{{today_calories}}" style="width:0%">
                         </div>
                     </div>
-                    <div id="progress-message">
+                        <div id="progress-message">
                     </div>
                 </div>
-                {% else %}
-                    <p class="lead">Your daily calories are not set.</p>
-                    <p>Go to Profile > Edit Daily Calories to set your daily calories.</p>
-                {% endif %}
+            {% else %}
+                <p class="lead">Your daily calories are not set.</p>
+                <p>Go to Profile > Edit Daily Calories to set your daily calories.</p>
+            {% endif %}
 
                 <div class="row my-2 py-2">
                     <h4>Log Your Calories</h4>
@@ -78,6 +77,5 @@
 {% endblock %}
 
 {% block script %}
-    <script src="{% static 'calorie/calorie.js' %}"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://developer.edamam.com/attribution/badge.js"></script>
 {% endblock %}
